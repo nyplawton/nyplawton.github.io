@@ -8,7 +8,7 @@
     "icons": [
     { "src": "images/snack.jpg",
     "sizes": "64x64",
-    "type": "images/jpg"
+    "type": "image/jpg"
     }
     ]
 }
