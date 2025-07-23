@@ -6,9 +6,9 @@
     "background_color": "#ffffff",
     "theme_color": "#00FF00",
     "icons": [
-    { "src": "teapot.png",
+    { "src": "images/snack.jpg",
     "sizes": "64x64",
-    "type": "images/png"
+    "type": "images/jpg"
     }
     ]
 }
