@@ -1,0 +1,809 @@
+/* Font Use */
+/*
+    name: Gyosho
+    link: https://www.dafont.com/gyosho.font
+
+    main: "main", cursive, "Comic Sans MS", sans-serif
+    body: font-family: 'Monaco', Arial, Helvetica, sans-serif;
+*/
+
+/********************************
+/* Color Use */
+/*
+    Highlight: #ffa600 Gold
+    Focus:     ##e00c41 Red
+    Main:      #fffef6 White
+
+    Focus Shading: #b90935 Dark Red
+    Focus blend  : #e00c4183 Half transparent Red
+*/
+
+/*************************************
+    Z-index: max is set to 9 (e.g. overlay)
+
+*/
+
+
+
+/********************************
+/* Font Importation */
+@font-face {
+    font-family: 'main';
+    src: url(fonts/Gyosho.ttf) format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Remove margin and padding for every element in the body
+   And set the default font family to Monaco
+*/
+body {
+    background-color: #f6f6f4;
+    margin: 0%;
+    padding: 0%;
+
+    font-family: 'Monaco', Arial, Helvetica, sans-serif;
+}
+
+/* Make h2 element to have highlight color - gold and set font to main */
+h2 {
+    font-family: "main", cursive, "Comic Sans MS", sans-serif;
+    font-size: 5vw;
+    color: #FFA600;
+}
+
+/* Make h3 element to have focus color - red */
+h3{
+    font-size: 3vw;
+    color: #e00c41;
+}
+
+/* Make every image to cover the entire parents size */
+img {
+    height: 100%;
+    width: 100%;
+}
+
+/* Apply italic and less saturated color to the citation */
+figcaption {
+    font-size: 0.5em;
+    color: rgba(0, 0, 0, 0.500);
+    font-style: italic;
+}
+
+/* Add one character spacing between each li in ul */
+ul li, ol li{
+    margin-top: 1em;
+}
+
+/* Base styling for button:
+    1. Highlight color - gold solid border
+    2. Focus color - red background color
+    3. Main color - white font color 
+
+    Ensure a minimum interaction area of 48px
+*/
+button {
+    background-color: #e00c41;
+
+    padding: 1.5vh;
+    border: 2px solid #FFA600;
+    border-radius: 2em;
+
+    color: #FFA600;
+    font-weight: bold;
+    font-size: 1.3vw;
+    font-family: 'Monaco', Arial, Helvetica, sans-serif;
+
+    transition: background-color 0.2s,
+                border 0.2s;
+}
+button:hover{
+    background-color: #b90935;
+    border: 2px dashed #FFA600;
+}
+
+/* Change link color to focus color - red */
+a{
+    color: #e00c41;
+}
+/* Change link color when hovering, to focus shading color - dark red */
+a:hover{
+    color: #b90935;
+}
+/* Change the checked color to highlight color - gold and mouse cursor to pointer (finger shape) */
+input[type = "checkbox"]{
+    accent-color: #FFA600;
+    cursor: pointer;
+}
+
+@media (max-width: 799px){
+    /* Ensure minimum interaction space for interactable item */
+    button, input[type = "checkbox"]{
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+}
+/********************************
+/* Shared Styling */
+
+/* Empty Heading styling, to avoid taking any space */
+.empty-display {
+    display: none;
+}
+
+/* Flex container for both horizontal and vertical alignment */
+.flex-container--horizontal {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flex-container--vertical {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Call for transition */
+.hover--background--red{
+    border: 4px solid #fffef6;
+    transition: background-color 0.2s,
+                color 0.2s,
+                border 0.2s;
+}
+/* While hovering, change background color to Focus color red, dashed highlight color gold, text color to msain color white */
+.hover--background--red:hover {
+    background-color: #e00c41;
+    color: #fffef6;
+    border: 4px dashed #FFA600;
+}
+
+/* Repeat the background image - red_background.jpg */
+.background--repeat{
+    background-image: url(images/red_background.jpg);
+    background-repeat: repeat;
+}
+
+/* Rounded corner main color - white background */
+.background--white{
+    background-color: #fffef6;
+
+    width: 100%;
+    padding: 2em;
+    border-radius: 0.5em;
+}
+/* Remove margin-top for every body text */
+.background--white h2, .background--white h3, .background--white p{
+    margin-top: 0;
+}
+
+/* Make the element an overlay by using position: fixed and align element to center by using flex */
+.overlay{
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9;
+}
+
+/* Set overflow to hidden to prevent scrolling */
+.no--scrolling{
+    overflow: hidden;
+}
+
+/* Base styling for cancel button:
+    1. Background color: main color - white
+    2. Text color      : focus color - red
+    3. Border color    : focus color - red solid
+    4. In circle shape
+*/
+.button--cancel{
+    width: 3vw;
+    height: 3vw;
+
+    background-color: #fffef6;
+    font-size: 2vw;
+    color: #e00c41;
+    text-align: center;
+
+    border: 4px solid #e00c41;
+    border-radius: 50%;
+    padding: 0.2vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Layout Grid container, works together with:
+    1. layout--card--top-left
+    2. layout--card--top-right
+    3. layout--card--bot-left
+    4. layout--card--bot-right
+
+    To align layout--card at different corner in the grid
+*/
+.layout--card--grid-container{
+    display: grid;
+    grid-template-columns: repeat(9, 11%);
+    grid-template-rows: repeat(2, 1fr);
+
+    margin-top: 5vh;
+}
+.layout--card--top-left{
+    grid-column: 2 / 5;
+    grid-row: 1 / 2;
+}
+.layout--card--top-right{
+    grid-column: 6 / 9;
+    grid-row: 1 / 2;
+}
+.layout--card--bot-left{
+    grid-column: 2 / 5;
+    grid-row: 2 / 3;
+}
+.layout--card--bot-right{
+    grid-column: 6 / 9;
+    grid-row: 2 / 3;
+}
+/* Card Layout
+    required the following in body:
+        1. img  - for image
+        2. h4 - for title
+        
+    optional for hover:
+        1. hover--circle-text
+            - To add a circle border to the child text with this tag
+*/
+/* Flex container, align item to center axis */
+.layout--card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: relative;
+
+    margin-top: 2em;
+}
+/* Add rounded border to img */
+.layout--card img{
+    border-radius: 0.5em;    
+    transition: border-radius 0.5s;
+}
+/* Margin-top after the img */
+.layout--card h4{
+    margin: 0.5em 0 0 0;
+    font-size: 2vw;
+}
+/* Add a circle border around the text to make it cover the hovered img and Hide the hover element */
+.layout--card .hover--circle-text{
+    background-color: #e00c418c;
+
+    font-weight: bold;
+    color: #FFA600;
+
+    border: 8px dashed #FFA600;
+
+    position: absolute; /* To align tgt with the img */
+
+    opacity: 0%;
+    transition: opacity 0.5s,
+                border-radius 0.5s;
+}
+/* Hover Effect */
+/* Make image to have circle border */
+.layout--card:hover img{
+    border-radius: 50%;
+}
+/* Fade in circle text by controlling the opacity and round the border to circle */
+.layout--card:hover .hover--circle-text{
+    opacity: 100%;
+    border-radius: 50%;
+}
+
+
+/* Content layout, required the following child structure in html:
+    -- .layout--content--grid-container >> Content background and grid container
+    ---- .button--cancel >> Button to close the content
+    ---- figure >> content image holder (not scrollable)
+    ------ img  >> content image
+    ---- div    >> content holder (scrollable)
+*/
+
+/* Applly an overlay background to cover the whole screen */
+.layout--content{
+    left: 0; /* Works with .overlay, to align content to top-left corner */
+
+    background-color: #00000050;
+    width: 100vw;
+    height: 100vh;
+}
+/* Grid container */
+.layout--content .layout--content--grid-container{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1em;
+    
+    position: relative;
+
+    height: 90vh;
+    width: 45vw;
+    padding: 2em;
+}
+/* Align the cancel button to the top right corner of the content background */
+.layout--content--grid-container .button--cancel{
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+/* Take 1 grid row to put img, align image to center by using flex */
+.layout--content--grid-container figure{
+    grid-row: 1 / 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* Align image to the top, and resize to cover the area while keeping the aspect ratio of the image */
+.layout--content--grid-container figure img{
+    object-fit: contain;
+}
+/* Take 2 grid row to hold content, text are clipped and scrollable */
+.layout--content--grid-container div{
+    grid-row: 3 / 6;
+    overflow-y: auto;
+
+    padding: 0 1vw;
+}
+
+/* Set the background image and make it repeated, and provide a padding for the child content */
+.m{
+    width: 100%;
+
+    margin: 0%;
+    padding: 0vh 5vw;
+}
+/* Add in invisible border for title, to create 5vh of gap between the edge and body content */
+.m h2{
+    margin: 0;
+    border-top: #00000000 solid 5vh;
+    border-bottom: #00000000 solid 5vh;
+}
+
+/* To cover the content underneath (100% width * 10%), with z-index set to 9 and color set to main color - white */
+.cover--horizontal--white{
+    background-color: #fffef6;
+    width: 100%;
+    height: 5em;
+
+    position: relative;
+    z-index: 9;
+}
+
+/* Hoverable Sub Topic Navigator */
+
+/* Parents container for hoverable, prevent the child object from rendering out of the box during the animation */
+.hover--sub-topic-navigator{
+    overflow: hidden;
+    position: relative;
+}
+/* Hide the title on default by setting opacity to 0, transition will starts after a delay of 0.5s to make sure the img is faded first */
+.hover--sub-topic-navigator--title{
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out 0.5s;
+}
+/* Allow for transition */
+.hover--sub-topic-navigator--img{
+    transition: transform 1.0s,
+                opacity 0.5s;
+}
+
+/* Hoverable Sub Topic Navigator hover effect */
+/* Fade in the text after a 0.5s of delay */
+.hover--sub-topic-navigator:hover .hover--sub-topic-navigator--title{
+    opacity: 100%;
+}
+.hover--sub-topic-navigator:hover .hover--sub-topic-navigator--img{
+    transform: translateY(80%);
+    opacity: 50%;
+}
+
+/* -Shared Styling End- */
+
+
+/**********************************
+/* Landing */
+
+/* Set the backgrund image of landing page to the red background
+   And Act as flex container to align its item to the center 
+*/
+#landing {
+    height: 100vh;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* Landscape white background inside the #landing
+   Ac as a grid container to align its items
+*/
+#landing--grid-container {
+    background-color: #fffef6;
+
+    height: 60%;
+    width: 80%;
+    border-radius: 2%;
+    margin-bottom: 5vh;
+
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(5, 20%);
+}
+
+/* Decoration image for the landing page, 
+   Cover the vertical middle part of the white area 
+   and extend out of the white background
+*/
+#landing--deco-image {
+    grid-column: 4 / 6;
+    grid-row: 2 / 5;
+
+    margin: 0;
+    padding: 0 15% 0 0;
+}
+
+/* Apply round corner to the deco image */
+#landing--deco-image img {
+    border-radius: 2%;
+}
+
+/* Layout for sub-title of landing page */
+#landing--title--sub {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+
+    margin-left: 10%;
+
+    /* Text Styling */
+    /* Align the text to the bottom vertically */
+    font-size: 5vw;
+    font-weight: bold;
+
+    display: flex;
+    align-items: end;
+}
+
+/* Layout for main-title of landing page */
+#landing--title--main {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+
+    margin-left: 15%;
+
+    /* Text Styling */
+    /* Align the text to the bottom vertically and extend to overlap with the image */
+    font-family: "main", cursive, "Comic Sans MS", sans-serif;
+    color: #e00c41;
+    font-size: 5vw;
+    font-weight: bold;
+
+    display: flex;
+    align-items: end;
+}
+
+/* Ensure the button to have the same size */
+.landing--button {
+    width: 30vw;
+}
+
+/* -Landing End- */
+
+
+/*************************/
+/* Costume */
+
+/* Apply background color: Main and cover the entire screen */
+#costume {
+    background-color: #fffef6;
+
+    height: 100vh;
+    width: 100%;
+    border-bottom: 4px solid #e00c41;
+
+    position: relative;
+    /* To allow the section title with position--absolute to stays relative to this section space */
+
+}
+
+/* Allow the flex container attached to nav to:
+    Extend its height to 100% to take up the entire height, so as to align the items to the screen center
+    Align its flex item to the edge by using space-between
+*/
+#costume nav {
+    height: 100%;
+    justify-content: space-between;
+}
+
+/* Flex item, to cover the full parent height to align the item to the center by using flex */
+#costume nav a {
+    height: 100%;
+    width: 33%;
+    border-radius: 0.5em;
+
+    display: flex;
+    align-items: center;
+
+}
+
+/* Styling for costume section title
+    Align text to top left
+    Text color will be less saturated to blend into the background
+    Title font styling
+*/
+#costume--title {
+    font-family: "main", cursive, "Comic Sans MS", sans-serif;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #e00c4183;
+    text-align: left;
+
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 2vh;
+
+    pointer-events: none; /* Prevent the text from blocking the hovering event of other element */
+}
+
+/* - Costume End - */
+
+
+/**************************/
+/* Symbolism */
+
+/* Apply background color: Main and cover the entire screen */
+#symbolism {
+    background-color: #fffef6;
+
+    height: 100vh;
+    width: 100%;
+    border-bottom: 4px solid #e00c41;
+    position: relative;
+    /* To allow the section title with position--absolute to stays relative to this section space */
+}
+
+/* Allow the flex container attached to nav to:
+    Extend its height to 100% to take up the entire height, so as to align the items to the screen center
+    Align its flex item to the edge by using space-between
+*/
+#symbolism nav {
+    height: 100%;
+    justify-content: space-between;
+}
+
+/* Flex item, to cover the full parent height to align the item to the center by using flex */
+#symbolism nav a {
+    height: 100%;
+    width: 33%;
+
+    border-radius: 0.5em;
+}
+
+/* Styling for symbolism section title
+    Align text to top right
+    Text color will be less saturated to blend into the background
+    Title font styling
+*/
+#symbolism--title {
+    font-family: "main", cursive, "Comic Sans MS", sans-serif;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #e00c4183;
+    text-align: right;
+
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 2vh;
+    right: 0;
+
+    pointer-events: none; /* Prevent the text from blocking the hovering event of other element */
+}
+
+/*****************************/
+/* Main Superstition */
+
+/* Add in gap between the previous content and current */
+#m-superstition--form{
+    margin-top: 5vh;
+}
+
+/* Add highlight color - gold border to the top of each option description */
+.m-superstition--option{
+    width: 100%;
+
+    padding: 0.5em;
+    border-top: 2px solid #FFA600;
+}
+/* Align item vertically center */
+.m-superstition--option div{
+    justify-content: flex-start;
+}
+
+/* Add in 0.5em left margin between the check box and option description */
+.m-superstition--option--description{
+    width: 100%;
+
+    padding: 0.2em;
+    margin-left: 0.5em;
+    border-radius: 0.2em;
+}
+/* Align the arrow icon to the right edge of the option */
+.m-superstition--option--expand--sign{
+    font-weight: bold;
+    margin-left: 1em;
+    display: inline-block; /* Allow it to rotate by changing inline to inline-block*/
+    
+    transition: transform 0.5s;
+}
+/* Rotate the expand sign to rotate and point downward */
+.m-superstition--option--expand .m-superstition--option--expand--sign{
+    transform: rotate(90deg);
+}
+
+/* Option details container, default state is set to hidden (height = 0) */
+.m-superstition--option--detail{
+    overflow: hidden;
+    color: black;
+    
+    height: 0;
+    padding: 0;
+    border: 0px solid #FFA600;
+    border-radius: 0.5em;
+    margin-top: 1em;
+    
+    transition: height 0.2s, /* heihgt is controled by main.js */
+                padding 0.2s,
+                border 0.2s;
+}
+/* Remove the margin-top for the header in option detail */
+.m-superstition--option--detail h4{
+    margin-top: 0;
+}
+
+/* Styling for form external link, to add in 0.5em margin-top */
+#m-superstition--form nav{
+    margin-top: 0.5em;
+}
+
+/* Extend to take 40% of parents width */
+#m-superstition--form--submit-button{
+    width: 40%;
+}
+
+/* Align the text content to the center */
+#m-superstition--form--result{
+    text-align: center;
+}
+/* Scale up the score font-size to 12vw */
+#m-superstition--form--result h2{
+    font-size: 8em;
+}
+
+/* Clicked Effect */
+/* Transition for drop down, transit the border and padding */
+.m-superstition--option--expand .m-superstition--option--detail{
+    padding: 0.5em;
+    border: 2px solid #FFA600;
+}
+
+/* -Main Superstition End- */
+
+
+/*******************************/
+/* Main Ritual */
+
+/* Set the position to relative, to allow the child to overlap with other child */
+#m-ritual--interaction{
+    position: relative;
+}
+/* Remove the top, left and right margin and keep bottom margin as 0.5em to connect to the cover at the top without any gap */
+#m-ritual--interaction figure{
+    margin: 0 0 0.5em 0;
+}
+/* Align the 2 looping images in the same line, and hide the overflowed content */
+#m-ritual--interaction figure span{
+    display: flex;
+    flex-wrap: nowrap;
+
+    overflow-x: hidden;
+}
+
+/* Make the arrow rounded */
+.m-ritual--interaction--button--circle{
+    width: 2em;
+    height: 2em;
+
+    border-radius: 50%;
+}
+
+/* Male circle button rounded with highlight color - gold */
+.m-ritual--interaction--button--hollow{
+    background-color: #fffef6;
+
+    padding: 0.5em;
+    border: 2px solid #FFA600;
+    margin: 0 0.5vw;
+}
+/* Class for clicked button, to change the background color to focus color - red */
+.m-ritual--interaction--button--hollow--clicked{
+    background-color: #e00c41;
+}
+
+/* Align the parents to be slightly more above the buttons (height = 2em) and figcaption (height = 0.5em), and align the children content to the center */
+#m-ritual--interaction--character--parent{
+    position: absolute;
+    bottom: 3.0em;
+
+    justify-content: center;
+}
+/* Define the character parent's size as 10vw * 10vw */
+#m-ritual--interaction--character--parent figure{
+    position: relative;
+
+    width: 10vw;
+    height: 10vw;
+}
+/* Align the character heead and body img to overlap with each other */
+#m-ritual--interaction--character--parent figure img{
+    position: absolute;
+    bottom: 0;
+}
+
+/* Align the drop down to the top edge of the looping background */
+#m-ritual--interaction--top-drop-down{
+    position: absolute;
+    top: 7em;
+
+    align-items: flex-start;
+    z-index: 1;
+
+    transition: top 0.5s;
+}
+/* Remove margin-top of the page header */
+#m-ritual--interaction--top-drop-down h2{
+    border: 0;
+    font-size: 3em;
+}
+
+/* Align cotent button to the top right corner of the looping background */
+#m-ritual--interaction--content-button{
+    position: absolute;
+    right: 1em;
+
+    /* Make the button circle */
+    width: 2em;
+    height: 2em;
+
+    border-radius: 50%;
+}
