@@ -1,6 +1,6 @@
 {
-   "name": "WebDev Demo14 PWA",
-    "short_name": "14PWA",
+   "name": "WebDev Assignment 2",
+    "short_name": "Webdev A2",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
